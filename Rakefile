@@ -1,0 +1,17 @@
+# frozen_string_literal: true
+
+require 'bundler/gem_tasks'
+require 'rspec/core/rake_task'
+
+unless ENV['CI']
+  require 'github_changelog_generator/task'
+
+  GitHubChangelogGenerator::RakeTask.new :changelog do |config|
+    config.user = 'janklimo'
+    config.project = 'shrine-cloudimage'
+  end
+end
+
+RSpec::Core::RakeTask.new(:spec)
+
+task default: :spec
