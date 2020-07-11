@@ -10,7 +10,7 @@ class Shrine
           opts[:client] = ::Cloudimage::Client.new(**opts[:client])
         end
 
-        uploader.opts[:cloudimage] ||= { purge: false }
+        uploader.opts[:cloudimage] ||= {}
         uploader.opts[:cloudimage].merge!(**opts)
 
         return if uploader.cloudimage_client
@@ -26,7 +26,13 @@ class Shrine
 
       module FileMethods
         def cloudimage_url(**options)
-          cloudimage_client.path(cloudimage_id).to_url(**options)
+          cloudimage_client.path(url).to_url(**options)
+        end
+
+        private
+
+        def cloudimage_client
+          shrine_class.cloudimage_client
         end
       end
     end

@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 gemspec
 
+gem 'aws-sdk-s3'
 gem 'rake'
 gem 'rspec'
 gem 'rubocop'
