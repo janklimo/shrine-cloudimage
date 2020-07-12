@@ -1,6 +1,6 @@
 # Shrine::Plugins::Cloudimage
 
-![](https://github.com/janklimo/shrine-cloudimage/workflows/Build/badge.svg)
+[![Gem Version](https://badge.fury.io/rb/shrine-cloudimage.svg)](https://badge.fury.io/rb/shrine-cloudimage) ![Build status](https://github.com/janklimo/shrine-cloudimage/workflows/Build/badge.svg)
 
 [Cloudimage](https://www.cloudimage.io) integration for [Shrine](https://shrinerb.com).
 
