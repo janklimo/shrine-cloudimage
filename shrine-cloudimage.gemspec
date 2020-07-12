@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.description = 'Fast and easy image resizing, transformation, and acceleration in the Cloud.'
 
   s.homepage = 'https://github.com/janklimo/shrine-cloudimage'
-  s.files = `git ls-files -- bin lib`.split("\n") + %w[CHANGELOG.md LICENSE README.md]
+  s.files = `git ls-files -- bin lib`.split("\n") + %w[CHANGELOG.md LICENSE.txt README.md]
   s.license = 'MIT'
 
   s.metadata = {
