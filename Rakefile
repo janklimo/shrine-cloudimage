@@ -9,6 +9,7 @@ unless ENV['CI']
   GitHubChangelogGenerator::RakeTask.new :changelog do |config|
     config.user = 'janklimo'
     config.project = 'shrine-cloudimage'
+    config.issues = false
   end
 end
 

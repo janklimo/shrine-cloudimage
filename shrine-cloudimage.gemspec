@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = 'shrine-cloudimage'
-  s.version = '0.1.0'
+  s.version = '0.1.1'
   s.authors = ['Jan Klimo']
   s.email = ['jan.klimo@gmail.com']
   s.summary = 'Cloudimage integration for Shrine.'
@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = Gem::Requirement.new('>= 2.4.0')
 
-  s.add_dependency 'cloudimage', '~> 0.3.0'
+  s.add_dependency 'cloudimage', '~> 0.3'
   s.add_dependency 'shrine', '>= 2.0', '< 4'
 
   s.add_development_dependency 'github_changelog_generator', '~> 1.15.2'

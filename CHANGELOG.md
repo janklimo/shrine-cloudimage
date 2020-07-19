@@ -4,13 +4,9 @@
 
 [Full Changelog](https://github.com/janklimo/shrine-cloudimage/compare/57c0bb934bb097eeb301166b404d1cc94181e396...v0.1.0)
 
-**Closed issues:**
+**Implemented enhancements:**
 
-- Generate Cloudimage URLs from options [\#1](https://github.com/janklimo/shrine-cloudimage/issues/1)
-
-**Merged pull requests:**
-
-- cloudimage\_url method for uploaded files [\#2](https://github.com/janklimo/shrine-cloudimage/pull/2) ([janklimo](https://github.com/janklimo))
+- Add Cloudimage file method for uploaded files [\#2](https://github.com/janklimo/shrine-cloudimage/pull/2) ([janklimo](https://github.com/janklimo))
 
 
 
