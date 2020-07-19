@@ -63,6 +63,15 @@ photo.image.cloudimage_url(w: 300, h: 300, blur: 5)
 # => "https://token.cloudimg.io/v7/https://my-bucket.s3.us-east-1.amazonaws.com/assets/image.jpg?blur=5&h=300&w=300"
 ```
 
+Cloudimage client can also be accessed directly. This way you can centralize your
+config in Shrine initializer and reuse it across your codebase:
+
+```ruby
+uri = Shrine.cloudimage_client.path('/assets/image.png')
+uri.w(200).h(400).to_url
+# => "https://token.cloudimg.io/v7/assets/image.png?h=400&w=200"
+```
+
 ## Development
 
 After checking out the repo, run `bundle install` to install dependencies.
