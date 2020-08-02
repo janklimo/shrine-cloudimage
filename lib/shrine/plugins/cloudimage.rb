@@ -10,7 +10,7 @@ class Shrine
           opts[:client] = ::Cloudimage::Client.new(**opts[:client])
         end
 
-        uploader.opts[:cloudimage] ||= {}
+        uploader.opts[:cloudimage] ||= { invalidate: false }
         uploader.opts[:cloudimage].merge!(**opts)
 
         return if uploader.cloudimage_client
@@ -29,10 +29,24 @@ class Shrine
           cloudimage_client.path(url).to_url(**options)
         end
 
+        def delete
+          super
+          cloudimage_invalidate if cloudimage_invalidate?
+        end
+
+        def cloudimage_invalidate
+          path = URI.parse(cloudimage_url).path
+          cloudimage_client.invalidate_original(path)
+        end
+
         private
 
         def cloudimage_client
           shrine_class.cloudimage_client
+        end
+
+        def cloudimage_invalidate?
+          shrine_class.opts[:cloudimage][:invalidate]
         end
       end
     end

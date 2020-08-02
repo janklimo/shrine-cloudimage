@@ -12,6 +12,8 @@ describe Shrine::Plugins::Cloudimage do
     )
     @shrine.storages[:s3] = @storage
     @s3_site = "https://#{bucket}.s3.us-stubbed-1.amazonaws.com"
+    @file =
+      @shrine.upload(StringIO.new('file'), :s3, location: 'assets/image.jpg')
   end
 
   describe '.configure' do
@@ -41,8 +43,6 @@ describe Shrine::Plugins::Cloudimage do
   describe '#cloudimage_url' do
     before do
       @shrine.plugin :cloudimage, client: { token: 'token' }
-      @file =
-        @shrine.upload(StringIO.new('file'), :s3, location: 'assets/image.jpg')
     end
 
     it 'returns Cloudimage URL' do
@@ -66,6 +66,41 @@ describe Shrine::Plugins::Cloudimage do
         blur: 20, w: 300, h: 300, seal_params: %i[w h blur],
       )
       expect(result).to eq expected
+    end
+  end
+
+  describe '#delete' do
+    it "doesn't invalidate by default" do
+      @shrine.plugin :cloudimage, client: { token: 'token', api_key: 'key' }
+      allow(@shrine.cloudimage_client).to receive(:invalidate_original)
+
+      @file.delete
+
+      expect(@shrine.cloudimage_client)
+        .not_to have_received(:invalidate_original)
+    end
+
+    it 'performs invalidation when opted-in' do
+      options = {
+        token: 'token',
+        api_key: 'key',
+        aliases: {
+          'https://my-bucket.s3.us-stubbed-1.amazonaws.com' => '_cdn_',
+        },
+      }
+      @shrine.plugin :cloudimage, client: options, invalidate: true
+      allow(@shrine.cloudimage_client).to receive(:invalidate_original)
+
+      # One way to trigger invalidation
+      @file.cloudimage_invalidate
+
+      # ... and another.
+      @file.delete
+
+      expect(@shrine.cloudimage_client)
+        .to have_received(:invalidate_original)
+        .with('/v7/_cdn_/assets/image.jpg')
+        .twice
     end
   end
 end

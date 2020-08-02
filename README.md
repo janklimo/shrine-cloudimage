@@ -10,6 +10,7 @@ Supports Ruby `2.4` and above, `JRuby`, and `TruffleRuby`.
   - [Installation](#installation)
   - [Configuration](#configuration)
   - [Usage](#usage)
+    - [Invalidation API](#invalidation-api)
   - [Development](#development)
   - [Contributing](#contributing)
   - [License](#license)
@@ -50,8 +51,7 @@ Shrine.plugin :cloudimage, Cloudimage::Client.new(
 )
 ```
 
-See [`cloudimage`](https://github.com/scaleflex/cloudimage-rb) for a list
-of available options.
+See [`cloudimage`][cloudimage] for a list of available options.
 
 ## Usage
 
@@ -72,6 +72,24 @@ uri.w(200).h(400).to_url
 # => "https://token.cloudimg.io/v7/assets/image.png?h=400&w=200"
 ```
 
+### Invalidation API
+
+Set `:invalidate` to `true` if you want images to be automatically
+[purged][invalidation] from Cloudimage on deletion:
+
+```rb
+Shrine.plugin :cloudimage, client: { token: 'token', api_key: 'key' }, invalidate: true
+```
+
+You can also invalidate all cached transformations of the given image manually with
+`Shrine::UploadedFile#cloudimage_invalidate`:
+
+```rb
+photo.image.cloudimage_invalidate
+```
+
+Note that invalidation requires passing the `:api_key` option to your Cloudimage client.
+
 ## Development
 
 After checking out the repo, run `bundle install` to install dependencies.
@@ -87,3 +105,6 @@ are expected to adhere to the
 ## License
 
 [MIT](https://opensource.org/licenses/MIT)
+
+[invalidation]: https://docs.cloudimage.io/go/cloudimage-documentation-v7/en/caching-acceleration/invalidation-api
+[cloudimage]: https://github.com/scaleflex/cloudimage-rb
