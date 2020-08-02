@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = 'shrine-cloudimage'
-  s.version = '0.1.1'
+  s.version = '0.2.0'
   s.authors = ['Jan Klimo']
   s.email = ['jan.klimo@gmail.com']
   s.summary = 'Cloudimage integration for Shrine.'
