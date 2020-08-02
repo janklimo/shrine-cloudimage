@@ -1,5 +1,17 @@
 # Changelog
 
+## [v0.2.0](https://github.com/janklimo/shrine-cloudimage/tree/v0.2.0) (2020-08-02)
+
+[Full Changelog](https://github.com/janklimo/shrine-cloudimage/compare/v0.1.1...v0.2.0)
+
+**Implemented enhancements:**
+
+- Trigger invalidation API when deleting the file [\#4](https://github.com/janklimo/shrine-cloudimage/pull/4) ([janklimo](https://github.com/janklimo))
+
+## [v0.1.1](https://github.com/janklimo/shrine-cloudimage/tree/v0.1.1) (2020-07-19)
+
+[Full Changelog](https://github.com/janklimo/shrine-cloudimage/compare/v0.1.0...v0.1.1)
+
 ## [v0.1.0](https://github.com/janklimo/shrine-cloudimage/tree/v0.1.0) (2020-07-12)
 
 [Full Changelog](https://github.com/janklimo/shrine-cloudimage/compare/57c0bb934bb097eeb301166b404d1cc94181e396...v0.1.0)
