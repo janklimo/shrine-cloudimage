@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.3.0](https://github.com/janklimo/shrine-cloudimage/tree/v0.3.0) (2020-08-16)
+
+[Full Changelog](https://github.com/janklimo/shrine-cloudimage/compare/v0.2.0...v0.3.0)
+
+**Implemented enhancements:**
+
+- Add srcset support [\#6](https://github.com/janklimo/shrine-cloudimage/pull/6) ([janklimo](https://github.com/janklimo))
+
 ## [v0.2.0](https://github.com/janklimo/shrine-cloudimage/tree/v0.2.0) (2020-08-02)
 
 [Full Changelog](https://github.com/janklimo/shrine-cloudimage/compare/v0.1.1...v0.2.0)
