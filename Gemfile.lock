@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    shrine-cloudimage (0.2.0)
+    shrine-cloudimage (0.3.0)
       cloudimage (~> 0.6)
       shrine (>= 2.0, < 4)
 
