@@ -29,6 +29,10 @@ class Shrine
           cloudimage_client.path(url).to_url(**options)
         end
 
+        def cloudimage_srcset(**options)
+          cloudimage_client.path(url).to_srcset(**options)
+        end
+
         def delete
           super
           cloudimage_invalidate if cloudimage_invalidate?

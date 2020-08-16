@@ -69,6 +69,18 @@ describe Shrine::Plugins::Cloudimage do
     end
   end
 
+  describe '#cloudimage_srcset' do
+    it 'returns srcset' do
+      @shrine.plugin :cloudimage, client: { token: 'token' }
+
+      result = @file.cloudimage_srcset(blur: 5)
+      urls = result.split(', ')
+
+      expect(urls.size).to be > 3
+      expect(urls).to all(match(/blur=5&w=\d{3,4} \d{3,4}w/))
+    end
+  end
+
   describe '#delete' do
     it "doesn't invalidate by default" do
       @shrine.plugin :cloudimage, client: { token: 'token', api_key: 'key' }

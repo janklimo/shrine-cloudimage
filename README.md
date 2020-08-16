@@ -10,6 +10,7 @@ Supports Ruby `2.4` and above, `JRuby`, and `TruffleRuby`.
   - [Installation](#installation)
   - [Configuration](#configuration)
   - [Usage](#usage)
+    - [`srcset` generation](#srcset-generation)
     - [Invalidation API](#invalidation-api)
   - [Development](#development)
   - [Contributing](#contributing)
@@ -70,6 +71,15 @@ config in Shrine initializer and reuse it across your codebase:
 uri = Shrine.cloudimage_client.path('/assets/image.png')
 uri.w(200).h(400).to_url
 # => "https://token.cloudimg.io/v7/assets/image.png?h=400&w=200"
+```
+
+### `srcset` generation
+
+Generate `srcset` for a `Shrine::UploadedFile` object by calling `#cloudimage_srcset`:
+
+```ruby
+photo.image.cloudimage_srcset(blur: 5)
+# => "https://token.cloudimg.io/v7/assets/image.jpg?blur=5&w=100 100w, https://token.cloudimg.io/v7/assets/image.jpg?blur=5&w=170 170w, https://token.cloudimg.io/v7/assets/image.jpg?blur=5&w=280 280w, https://token.cloudimg.io/v7/assets/image.jpg?blur=5&w=470 470w, https://token.cloudimg.io/v7/assets/image.jpg?blur=5&w=780 780w, https://token.cloudimg.io/v7/assets/image.jpg?blur=5&w=1300 1300w, https://token.cloudimg.io/v7/assets/image.jpg?blur=5&w=2170 2170w, https://token.cloudimg.io/v7/assets/image.jpg?blur=5&w=3620 3620w, https://token.cloudimg.io/v7/assets/image.jpg?blur=5&w=5760 5760w"
 ```
 
 ### Invalidation API
