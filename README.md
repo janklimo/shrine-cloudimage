@@ -47,7 +47,7 @@ Or pass in the client object directly:
 ```ruby
 require 'cloudimage'
 
-Shrine.plugin :cloudimage, Cloudimage::Client.new(
+Shrine.plugin :cloudimage, client: Cloudimage::Client.new(
   token: 'token', salt: 'salt', sign_urls: false, signature_length: 10
 )
 ```
